@@ -1,7 +1,7 @@
 using Climber3D.Events;
 using UnityEngine;
 
-namespace Climber3D
+namespace Climber3D.Limbs
 {
     public class Limb : MonoBehaviour
     {
@@ -29,21 +29,23 @@ namespace Climber3D
             _grabber.GrabberEntered += OnGrabberEntered;
         }
 
-        private void Update()
+        private void Update() // TODO : Implement Entity.cs => LimbEntity.cs;
         {
             if (Condition)
             {
                 _currentExtension += _extensionRate * Time.deltaTime * (_reverse ? -1f : 1f);
                 _currentExtension = Mathf.Min(
-                    Mathf.Max(0, _currentExtension), _extendability);
+                    Mathf.Max(0, _currentExtension),
+                    _extendability);
 
                 if (_currentExtension >= _extendability)
                 {
                     _reverse = true;
                 }
 
-                Debug.Log($"Up {_extenderLimb.transform.up}");
-                _extenderLimb.transform.localPosition = _initialExtenderPosition + (_extenderLimb.transform.up * _currentExtension);
+                // Debug.Log($"Up {_extenderLimb.transform.up}");
+                _extenderLimb.transform.localPosition =
+                    _initialExtenderPosition + (_directorLimb.transform.up * _currentExtension);
             }
         }
 
@@ -55,7 +57,6 @@ namespace Climber3D
                 _reverse = false;
                 _directorLimb.transform.rotation = Quaternion.LookRotation(Vector3.forward, _direction);
                 _initialExtenderPosition = _extenderLimb.transform.localPosition;
-                Debug.Log($"[!] {gameObject.name} Initiated with Direction {_direction}");
             }
         }
 

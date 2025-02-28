@@ -1,4 +1,4 @@
-namespace Climber3D
+namespace Climber3D.Limbs
 {
     public enum LimbType
     {

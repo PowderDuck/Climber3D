@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3909254984033598725}
   - component: {fileID: 7076181485757638499}
   - component: {fileID: 5010160231947739343}
+  - component: {fileID: 3407968870248490400}
   m_Layer: 5
   m_Name: DragArea
   m_TagString: Untagged
@@ -75,3 +76,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3407968870248490400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162212964701870156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8775cc6084f32ac4e8b77f5ab2e8d244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _limbType: 0

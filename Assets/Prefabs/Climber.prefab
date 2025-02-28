@@ -303,16 +303,16 @@ PrefabInstance:
       addedObject: {fileID: 520182264979897407}
     - targetCorrespondingSourceObject: {fileID: 3907612201796222895, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6146068146716981293}
-    - targetCorrespondingSourceObject: {fileID: 3907612201796222895, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8885052749202457891}
     - targetCorrespondingSourceObject: {fileID: 3907612201796222895, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1690398178993903096}
+    - targetCorrespondingSourceObject: {fileID: 3907612201796222895, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5456917206257014822}
     - targetCorrespondingSourceObject: {fileID: -4207775839627291983, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7688142066975066930}
+      addedObject: {fileID: 2478658970572930287}
     - targetCorrespondingSourceObject: {fileID: -4207775839627291983, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2502909187468024680}
@@ -386,27 +386,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3907612201796222895, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
   m_PrefabInstance: {fileID: 1183313716538531260}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &6146068146716981293
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2761085999125357075}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.0015
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8885052749202457891
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -446,6 +425,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4e18f1c3e205d428a1d06610e7f6f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &5456917206257014822
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761085999125357075}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0007
+  m_Height: 0.003
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3272337800399647518 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4827203035979108702, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
@@ -466,8 +468,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -4207775839627291983, guid: 04acdfbe3d890374e9288b1b4b2de76d, type: 3}
   m_PrefabInstance: {fileID: 1183313716538531260}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &7688142066975066930
-SphereCollider:
+--- !u!136 &2478658970572930287
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -484,8 +486,10 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.0015
+  serializedVersion: 2
+  m_Radius: 0.001
+  m_Height: 0.003
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2502909187468024680
 Rigidbody:
@@ -560,7 +564,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.0015
+  m_Radius: 0.0012
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2348115406533712369
 Rigidbody:
@@ -625,7 +629,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.0015
+  m_Radius: 0.0012
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1940759032510469139
 Rigidbody:
