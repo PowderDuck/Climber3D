@@ -26,6 +26,7 @@ namespace Climber3D.Limbs
 
         private void Awake()
         {
+            _grabber.SetLimb(this);
             _grabber.GrabberEntered += OnGrabberEntered;
         }
 
@@ -43,9 +44,8 @@ namespace Climber3D.Limbs
                     _reverse = true;
                 }
 
-                // Debug.Log($"Up {_extenderLimb.transform.up}");
                 _extenderLimb.transform.localPosition =
-                    _initialExtenderPosition + (_directorLimb.transform.up * _currentExtension);
+                    _initialExtenderPosition + (Vector3.up * _currentExtension);
             }
         }
 

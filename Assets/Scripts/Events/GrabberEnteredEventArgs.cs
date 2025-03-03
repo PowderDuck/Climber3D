@@ -1,13 +1,13 @@
 using System;
-using UnityEngine;
+using Climber3D.Climbables;
 
 namespace Climber3D.Events
 {
     public class GrabberEnteredEventArgs : EventArgs
     {
-        public GameObject Target { get; }
+        public Climbable Target { get; }
 
-        public GrabberEnteredEventArgs(GameObject target)
+        public GrabberEnteredEventArgs(Climbable target)
         {
             Target = target;
         }
