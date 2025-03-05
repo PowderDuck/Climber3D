@@ -1,3 +1,4 @@
+using Climber3D.Climbables;
 using Climber3D.Events;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ namespace Climber3D.Limbs
         private bool Condition => _reverse ? _currentExtension > 0 : _currentExtension < _extendability;
 
         private bool IsExtending => _currentExtension > 0;
+
+        private Climbable? _activeClimbable { get; set; } = null;
 
         private void Awake()
         {
@@ -57,6 +60,7 @@ namespace Climber3D.Limbs
                 _reverse = false;
                 _directorLimb.transform.rotation = Quaternion.LookRotation(Vector3.forward, _direction);
                 _initialExtenderPosition = _extenderLimb.transform.localPosition;
+                _activeClimbable?.Released(_grabber);
             }
         }
 
@@ -67,7 +71,11 @@ namespace Climber3D.Limbs
                 Debug.Log($"Entered {eventArgs.Target.name}");
 
                 _reverse = true;
-                _currentExtension = 0;
+                if (eventArgs.Target.Validate())
+                {
+                    _activeClimbable = eventArgs.Target;
+                    _currentExtension = 0;
+                }
             }
         }
     }

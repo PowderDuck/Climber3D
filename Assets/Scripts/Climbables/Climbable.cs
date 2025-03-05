@@ -30,6 +30,11 @@ namespace Climber3D.Climbables
             }
         }
 
+        public virtual bool Validate()
+        {
+            return _grabbers.Count < Capacity;
+        }
+
         protected abstract void ProcessGrab(Grabber grabber);
         protected abstract void ProcessRelease(Grabber grabber);
 

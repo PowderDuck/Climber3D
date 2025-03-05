@@ -67,7 +67,6 @@ namespace Climber3D
                 }
             }
         }
-
         private void InitiateDrag(Vector3 direction)
         {
             if (_currentLimb != null)
@@ -83,6 +82,11 @@ namespace Climber3D
                 _initialDragPosition = Vector3.zero;
                 _currentLimb = null;
             }
+        }
+
+        private void OnGrabbed(object sender, GrabberEnteredEventArgs eventArgs)
+        {
+            // TODO : Implement the displacement calculation;
         }
     }
 }
