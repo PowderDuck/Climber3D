@@ -6,10 +6,18 @@ namespace Climber3D.Entities
     {
         public TEntity Target { get; private set; } = default!;
 
-        private void Awake()
+        protected EntityHandler<TEntity> Handler { get; private set; } = default!;
+
+        protected virtual void Awake()
         {
             Target = GetComponent<TEntity>();
+            Handler = FindObjectOfType<EntityHandler<TEntity>>();
             Debug.Log($"[!] Found : {Target.gameObject.name}");
+        }
+
+        protected virtual void OnDisable()
+        {
+
         }
 
         public abstract void EntityUpdate();

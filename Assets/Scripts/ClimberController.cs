@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using Climber3D.Events;
 using Climber3D.Limbs;
 using UnityEngine;
+
+using Joint = Climber3D.Models.Joint;
 
 namespace Climber3D
 {
@@ -15,6 +18,9 @@ namespace Climber3D
         [SerializeField] private float _activationRadius = 5f;
         [SerializeField] private float _maxWait = 0.5f;
 
+        [Header("Displacement Settings\n")]
+        [SerializeField] private float _displacementSpeed = 0.5f;
+
         private IDictionary<LimbType, Limb> _limbs = new Dictionary<LimbType, Limb>();
 
         private float _currentWaitTime = 0f;
@@ -22,6 +28,11 @@ namespace Climber3D
         private Vector3 _initialDragPosition = Vector3.zero;
 
         private LimbType? _currentLimb = null;
+
+        private List<Joint> _joints = new();
+
+        private Vector3 _currentDisplacement = Vector3.zero;
+        private bool _isDisplacing = false;
 
         private void Start()
         {
@@ -32,11 +43,37 @@ namespace Climber3D
                 { LimbType.LEFT_HAND, _leftHand },
                 { LimbType.RIGHT_HAND, _rightHand }
             };
+
+            _limbs.Values
+                .ToList()
+                .ForEach(limb => limb.GrabberEntered += OnGrabbed);
+
+            _joints = new()
+            {
+                new Joint(new List<GameObject> { _leftLeg.gameObject, _leftHand.gameObject }, gameObject),
+                new Joint(new List<GameObject> { _rightLeg.gameObject, _rightHand.gameObject }, gameObject)
+            };
         }
 
         private void Update()
         {
             DragControl();
+            Displace();
+        }
+
+        private void Displace()
+        {
+            if (_isDisplacing)
+            {
+                var direction = _currentDisplacement - transform.position;
+                var extent = Mathf.Min(direction.magnitude / _displacementSpeed, 1f);
+
+                transform.position += direction.normalized * extent;
+                if (extent < 1f)
+                {
+                    _isDisplacing = false;
+                }
+            }
         }
 
         public void OnDragBegin(object sender, LimbDragBeginEventArgs eventArgs)
@@ -86,7 +123,18 @@ namespace Climber3D
 
         private void OnGrabbed(object sender, GrabberEnteredEventArgs eventArgs)
         {
-            // TODO : Implement the displacement calculation;
+            // var limb = (Limb)sender;
+            var displacement = Vector3.zero;
+            foreach (var joint in _joints)
+            {
+                displacement += joint.Displacement / _joints.Count;
+            }
+
+            if (displacement.magnitude > 0)
+            {
+                _currentDisplacement = displacement;
+                _isDisplacing = true;
+            }
         }
     }
 }

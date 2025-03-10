@@ -27,6 +27,8 @@ namespace Climber3D.Limbs
 
         private Climbable? _activeClimbable { get; set; } = null;
 
+        public event Grabber.GrabberEnteredEvent? GrabberEntered;
+
         private void Awake()
         {
             _grabber.SetLimb(this);
@@ -73,6 +75,7 @@ namespace Climber3D.Limbs
                 _reverse = true;
                 if (eventArgs.Target.Validate())
                 {
+                    GrabberEntered?.Invoke(this, new(eventArgs.Target));
                     _activeClimbable = eventArgs.Target;
                     _currentExtension = 0;
                 }
